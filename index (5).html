@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jurídico 360°</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);
+--navy:#0B2A4A;--blue:#1F6FB2;--orange:#F26A1B;--green:#1FA855;--bg:#F3F5F8;--card:#fff;--ink:#14263B;--mute:#5B6B7D;--line:#DDE3EA;--tint:#E8EEF6;--red:#C8201E}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1522;--card:#12243A;--ink:#EAF0F7;--mute:#9FB0C3;--line:#23384F;--tint:#183252}}
+:root[data-theme="dark"]{--bg:#0A1522;--card:#12243A;--ink:#EAF0F7;--mute:#9FB0C3;--line:#23384F;--tint:#183252}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+.app{max-width:480px;margin:0 auto}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--navy);color:#fff}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:19px;background:none;border:0;color:#fff;padding:0;font-family:inherit}
+.logo i{width:22px;height:22px;border:2px solid #7FB6E8;border-radius:50%}
+.wa-btn{width:42px;height:42px;border-radius:50%;background:var(--green);display:grid;place-items:center}
+.wa-btn svg,.tab svg{width:22px;height:22px;fill:currentColor}
+.hero{background:linear-gradient(170deg,var(--navy),#10406E);color:#fff;padding:28px 20px 34px}
+.hero h1{margin:0 0 10px;font-size:28px;line-height:1.15;letter-spacing:-.01em}
+.hero p{margin:0 0 20px;color:#C9DAEC;font-size:15px}
+.btn{display:inline-block;border:0;border-radius:999px;padding:14px 22px;font:700 16px inherit;font-family:inherit;color:#fff;background:var(--orange);text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;border:2px solid #7FB6E8;margin-left:8px;padding:12px 18px}
+.btn.block{display:block;width:100%;text-align:center}
+.sec{padding:26px 16px 4px}
+.sec h2{margin:0 0 14px;font-size:21px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+.plan.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.plan h3{margin:0;font-size:16px;letter-spacing:.02em}
+.price{font-size:32px;font-weight:800;margin:6px 0 2px}
+.price small{font-size:14px;font-weight:500;color:var(--mute)}
+.plan.dark .price small,.plan.dark .desc{color:#B9CCE0}
+.desc{color:var(--mute);font-size:14px;margin:0 0 12px}
+.plan ul{list-style:none;margin:0 0 16px;padding:12px 0 0;border-top:1px solid var(--line)}
+.plan.dark ul{border-color:#2A4C74}
+.plan li{padding:3px 0 3px 24px;position:relative;font-size:15px}
+.plan li:before{content:"";position:absolute;left:4px;top:8px;width:6px;height:11px;border:solid var(--blue);border-width:0 2px 2px 0;transform:rotate(40deg)}
+.plan.dark li:before{border-color:#7FB6E8}
+.vs{display:grid;grid-template-columns:1fr 1fr;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.vs div{padding:14px 12px;background:var(--card)}
+.vs h3{margin:-14px -12px 10px;padding:12px;color:#fff;text-align:center;font-size:15px}
+.vs .no h3{background:var(--red)}.vs .yes h3{background:var(--blue)}
+.vs .yes{background:var(--tint)}
+.vs p{margin:6px 0;font-weight:600;font-size:14px}
+.cta{margin:22px 16px 8px;background:var(--navy);border-radius:14px;padding:22px 18px;text-align:center;color:#fff}
+.cta p{margin:0 0 14px;color:#C9DAEC}
+.screen{display:none}.screen.on{display:block}
+.back{background:none;border:0;color:var(--blue);font:600 15px inherit;font-family:inherit;padding:14px 16px 0;cursor:pointer}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 16px}
+.seg{display:flex;gap:8px;margin-bottom:14px}
+.seg button{flex:1;padding:11px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:600 15px inherit;font-family:inherit;cursor:pointer}
+.seg button.on{border-color:var(--blue);background:var(--tint)}
+label{display:block;font-size:14px;color:var(--mute);margin:10px 0 4px}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:16px inherit;font-family:inherit}
+.pix{text-align:center;padding:8px 0}
+.pix b{display:block;width:120px;height:120px;margin:0 auto 10px;border:2px dashed var(--mute);border-radius:10px;background:repeating-conic-gradient(var(--ink) 0 25%,var(--bg) 0 50%) 0 0/24px 24px;opacity:.75}
+.note{font-size:13px;color:var(--mute);text-align:center;margin:10px 0 0}
+.ok{text-align:center;padding:40px 24px}
+.ok .big{width:72px;height:72px;border-radius:50%;background:var(--green);margin:0 auto 16px;position:relative}
+.ok .big:after{content:"";position:absolute;left:26px;top:14px;width:16px;height:32px;border:solid #fff;border-width:0 5px 5px 0;transform:rotate(40deg)}
+.chat{background:#E5DDD5;margin:0;min-height:55vh;padding:14px 12px;display:flex;flex-direction:column;gap:8px}
+:root[data-theme="dark"] .chat{background:#0E1A26}
+.chat-h{display:flex;align-items:center;gap:10px;background:#0B6B5C;color:#fff;padding:12px 16px;font-weight:600}
+.chat-h i{width:34px;height:34px;border-radius:50%;background:#fff;border:3px solid #0B6B5C;outline:2px solid #fff}
+.b{max-width:85%;padding:9px 12px;border-radius:10px;font-size:15px;box-shadow:0 1px 1px rgba(0,0,0,.12);color:#111}
+.b.me{align-self:flex-end;background:#DCF8C6}.b.bot{align-self:flex-start;background:#fff}
+.chips{padding:12px 16px;display:flex;flex-direction:column;gap:8px;background:var(--bg)}
+.chips p{margin:0;color:var(--mute);font-size:14px}
+.chips button{text-align:left;padding:12px 14px;border-radius:12px;border:1px solid var(--blue);background:var(--card);color:var(--ink);font:15px inherit;font-family:inherit;cursor:pointer}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabs div{max-width:480px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.tab{background:none;border:0;padding:10px 4px 9px;color:var(--mute);font:600 12px inherit;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;cursor:pointer}
+.tab.on{color:var(--blue)}.tab.wa{color:var(--green)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <button class="logo" onclick="go('home')"><i></i>Jurídico 360°</button>
+  <a class="wa-btn" data-wa="Olá! Vim pelo banner e gostaria de falar com o Jurídico 360°." aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" style="fill:#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg></a>
+</header>
+
+<main id="home" class="screen on">
+  <section class="hero">
+    <h1>Consultoria jurídica preventiva para sua empresa</h1>
+    <p>Soluções sob medida para proteger o seu negócio e garantir o seu crescimento, com planos mensais acessíveis.</p>
+    <a class="btn" data-wa="Olá! Quero o diagnóstico gratuito.">Diagnóstico gratuito</a>
+    <button class="btn ghost" onclick="go('plans')">Ver planos</button>
+  </section>
+  <section class="sec" id="plans-list"><h2>Escolha seu plano</h2></section>
+  <section class="sec"><h2>Sem e com o Jurídico 360°</h2>
+    <div class="vs">
+      <div class="no"><h3>Sem Jurídico 360°</h3><p>Multa trabalhista</p><p>Perda de tempo e dinheiro</p></div>
+      <div class="yes"><h3>Com Jurídico 360°</h3><p>Segurança jurídica</p><p>Contratos</p><p>Economia e prevenção</p></div>
+    </div>
+  </section>
+  <div class="cta"><p>Converse com o Suporte Jurídico 360° e tire suas dúvidas.</p><button class="btn" onclick="go('support')">Abrir o suporte</button></div>
+</main>
+
+<main id="plans" class="screen"><section class="sec" id="plans-list2"><h2>Planos mensais</h2></section></main>
+
+<main id="checkout" class="screen">
+  <button class="back" onclick="go('plans')">‹ Voltar aos planos</button>
+  <div class="box"><h3 id="ck-name" style="margin:0"></h3><div class="price" id="ck-price"></div><p class="desc" id="ck-desc" style="margin:0"></p></div>
+  <div class="box">
+    <div class="seg"><button class="on" id="m-pix" onclick="pay('pix')">Pix</button><button id="m-card" onclick="pay('card')">Cartão</button></div>
+    <label for="nm">Nome completo</label><input id="nm" autocomplete="name">
+    <label for="em">E-mail</label><input id="em" type="email" autocomplete="email">
+    <div id="p-pix" class="pix" style="margin-top:14px"><b></b><span class="desc">O código Pix aparece aqui.</span></div>
+    <div id="p-card" style="display:none"><label for="cn">Número do cartão</label><input id="cn" inputmode="numeric" placeholder="0000 0000 0000 0000"><label for="cv">Validade e código</label><input id="cv" placeholder="MM/AA   CVV"></div>
+    <div style="height:14px"></div>
+    <button class="btn block" id="ck-btn" onclick="go('done')"></button>
+    <p class="note">Protótipo: nenhum pagamento é realizado.</p>
+  </div>
+</main>
+
+<main id="done" class="screen"><div class="ok"><div class="big"></div><h2 style="margin:0 0 8px">Assinatura confirmada</h2><p class="desc">Esta é a tela final do protótipo. Em seguida, o cliente seria levado ao atendimento.</p><a class="btn" data-wa="Olá! Acabei de assinar um plano do Jurídico 360°.">Falar no WhatsApp</a></div></main>
+
+<main id="support" class="screen">
+  <div class="chat-h"><i></i>Suporte Jurídico 360°</div>
+  <div class="chat" id="chat"></div>
+  <div class="chips" id="chips"><p>Escolha uma pergunta:</p>
+    <button onclick="ask(0)">Oi, recebi uma notificação trabalhista, o que devo fazer agora?</button>
+    <button onclick="ask(1)">O meu contrato com fornecedor precisa de revisão?</button>
+    <button onclick="go('plans')">Quero conhecer os planos</button>
+    <a class="btn" style="text-align:center;background:var(--green)" data-wa="Olá! Preciso de ajuda jurídica.">Falar no WhatsApp</a>
+  </div>
+</main>
+</div>
+
+<nav class="tabs"><div>
+  <button class="tab on" data-t="home" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3L12 3Z"/></svg>Início</button>
+  <button class="tab" data-t="plans" onclick="go('plans')"><svg viewBox="0 0 24 24"><path d="M4 4h16v4H4V4Zm0 6h16v10H4V10Zm3 3v2h6v-2H7Z"/></svg>Planos</button>
+  <button class="tab" data-t="support" onclick="go('support')"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>Suporte</button>
+  <a class="tab wa" data-wa="Olá! Vim pelo banner e gostaria de falar com o Jurídico 360°."><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>WhatsApp</a>
+</div></nav>
+
+<script>
+/* Troque pelo seu número, com país e DDD, só dígitos. Ex.: 5568999999999 */
+var WA_NUMBER="68999640528";
+var PLANS={
+ ini:{n:"Plano iniciante",p:"49,90",d:"Básico para novos negócios",f:["Atendimento Rápido","Revisão Básica de Contratos","Suporte LGPD","Consultoria Básica","Contratos de Aluguel"]},
+ ess:{n:"Plano essencial",p:"99,90",d:"Suporte completo para empresas em crescimento.",f:["Consultoria Especializada","Implantação LGPD","Gestão Básica","Contratos Rápidos","Contratos de Aluguel"]},
+ bli:{n:"Plano blindagem",p:"199,90",d:"Proteção integral com monitoramento contínuo",f:["Assessoria Integral","Elaboração de Contratos","Auditoria LGPD","Proteção Total","Blindagem Empresarial Completa"],dark:1}
+};
+var ANS=["Olá! Não se preocupe. Vamos analisar juntos. Me envie uma foto do documento e faremos uma avaliação inicial. O primeiro passo é verificar os prazos. Mantenha a calma, estamos aqui.","Oi! Com certeza, é super importante garantir que todos os termos estejam claros e protejam sua empresa. Podemos revisar para você e garantir sua segurança."];
+var QS=["Oi, recebi uma notificação trabalhista, o que devo fazer agora?","O meu contrato com fornecedor precisa de revisão?"];
+var cur="ini";
+function $(i){return document.getElementById(i)}
+function planHTML(k){var x=PLANS[k];return '<article class="plan'+(x.dark?' dark':'')+'"><h3>'+x.n+'</h3><div class="price">R$ '+x.p+'<small>/mês</small></div><p class="desc">'+x.d+'</p><ul>'+x.f.map(function(i){return'<li>'+i+'</li>'}).join('')+'</ul><button class="btn block" onclick="choose(\''+k+'\')">Assinar '+x.n.toLowerCase().replace('plano ','')+'</button></article>'}
+var html=Object.keys(PLANS).map(planHTML).join('');
+$('plans-list').insertAdjacentHTML('beforeend',html);$('plans-list2').insertAdjacentHTML('beforeend',html);
+function go(s){document.querySelectorAll('.screen').forEach(function(e){e.classList.toggle('on',e.id===s)});
+ document.querySelectorAll('.tab[data-t]').forEach(function(t){t.classList.toggle('on',t.dataset.t===s)});window.scrollTo(0,0)}
+function choose(k){cur=k;var x=PLANS[k];$('ck-name').textContent=x.n;$('ck-price').innerHTML='R$ '+x.p+'<small>/mês</small>';$('ck-desc').textContent=x.d;$('ck-btn').textContent='Pagar R$ '+x.p+'/mês';pay('pix');go('checkout')}
+function pay(m){$('m-pix').classList.toggle('on',m==='pix');$('m-card').classList.toggle('on',m==='card');$('p-pix').style.display=m==='pix'?'block':'none';$('p-card').style.display=m==='card'?'block':'none'}
+function bub(t,c){var d=document.createElement('div');d.className='b '+c;d.textContent=t;$('chat').appendChild(d);d.scrollIntoView({block:'nearest'})}
+function ask(i){bub(QS[i],'me');setTimeout(function(){bub(ANS[i],'bot')},700)}
+document.querySelectorAll('[data-wa]').forEach(function(a){a.href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(a.dataset.wa);a.target='_blank';a.rel='noopener'});
+</script>
+</body>
+</html>
